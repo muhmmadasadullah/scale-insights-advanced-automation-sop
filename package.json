@@ -1,33 +1,24 @@
 {
-  "name": "central-documentation-dashboard",
-  "version": "1.0.0",
-  "description": "Central dashboard for managing and accessing business documents and SOPs",
-  "main": "server.js",
+  "name": "scale-insights-sop",
+  "version": "2.0.0",
+  "description": "Scale Insights SOP V2.0 - Amazon PPC Automation Standard Operating Procedure",
+  "main": "index.html",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js",
-    "build:static": "mkdir -p dist && cp index.html dist/ && cp -r docs dist/ && cp _headers dist/",
-    "deploy": "npm run build:static && npx wrangler pages deploy dist --project-name=scale-insights-documentation-dashboard",
-    "pm2:start": "pm2 start ecosystem.config.js",
-    "pm2:stop": "pm2 stop central-dashboard",
-    "pm2:restart": "pm2 restart central-dashboard",
-    "pm2:logs": "pm2 logs central-dashboard --nostream"
+    "serve": "python3 -m http.server 8000",
+    "test": "echo \"Static HTML document - no tests configured\" && exit 0"
   },
   "keywords": [
-    "documentation",
-    "dashboard",
+    "scale-insights",
+    "amazon-ppc",
+    "automation",
     "sop",
-    "business-documents"
+    "advertising"
   ],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.21.0",
-    "path": "^0.12.7",
-    "pm2": "^5.4.2"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/muhmmadasadullah/scale-insights-advanced-automation-sop.git"
   },
-  "devDependencies": {
-    "wrangler": "^4.31.0"
-  }
+  "homepage": "https://muhmmadasadullah.github.io/scale-insights-advanced-automation-sop"
 }
