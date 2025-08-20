@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scale Insights Rules SOP V2.0 - Amazon PPC Automation</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        /* Custom styles with proper spacing */
+        .rule-badge{
+            display:inline-block;padding:0.25rem 0.75rem;border-radius:9999px;
+            font-size:0.75rem;font-weight:600;line-height:1;
+        }
+        .fsi-badge{background:#DBEAFE;color:#1E40AF;}
+        .osi-badge{background:#E9D5FF;color:#6B21A8;}
+        .warning-badge{background:#FEF3C7;color:#92400E;}
+        .success-badge{background:#D1FAE5;color:#065F46;}
+        .danger-badge{background:#FECACA;color:#7F1D1D;}
+        
+        .code-block{
+            background:#F3F4F6;padding:0.75rem;border-radius:0.5rem;
+            font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size:0.875rem;white-space:pre-wrap;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .section-card {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+        }
+        
+        /* Professional footer styles */
+        .professional-footer {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+        
+        .linkedin-btn {
+            background: #0077b5;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #0077b5;
+        }
+        
+        .linkedin-btn:hover {
+            background: #005885;
+            border-color: #005885;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 119, 181, 0.3);
+        }
+        
+        /* Print-friendly styles */
+         {
+            .gradient-bg{background:#fff!important;color:#000!important}
+            .professional-footer{background:#f8f9fa!important;color:#000!important;border-top:2px solid #e9ecef;}
+            .section-card{box-shadow:none;border:1px solid #e5e7eb;}
+            a{color:#000;text-decoration:underline}
+            .no-print{display:none!important}
+            .linkedin-btn{background:#f8f9fa!important;color:#000!important;border:1px solid #000!important}
+        }
+        
+        /* Sticky navigation for desktop */
+        @media (min-width: 768px) {
+            .sticky-nav {
+                position: sticky;
+                top: 1rem;
+            }
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f9fafb;
+            font-weight: 600;
+        }
+        
+        .highlight-box {
+            background-color: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .info-box {
+            background-color: #dbeafe;
+            border: 1px solid #3b82f6;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .success-box {
+            background-color: #d1fae5;
+            border: 1px solid #10b981;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .workflow-box {
+            background-color: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <div class="gradient-bg text-white py-8 mb-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold mb-2">Scale Insights Rules SOP V2.0</h1>
+                <p class="text-xl opacity-90">Amazon PPC Automation Standard Operating Procedure</p>
+                <div class="mt-4 text-sm opacity-75">
+                    FSI+OSI Rules | 7thD Cadence | US, CA Markets | NB 30% / BR 12%
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 pb-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Table of Contents -->
+            <div class="lg:w-1/4">
+                <div class="sticky-nav">
+                    <div class="section-card">
+                        <h3 class="text-lg font-semibold mb-4 text-gray-800">Table of Contents</h3>
+                        <nav class="space-y-2">
+                            <a href="#overview" class="block text-sm text-blue-600 hover:text-blue-800">1. Overview</a>
+                            <a href="#foundation" class="block text-sm text-blue-600 hover:text-blue-800">2. Foundation & Structure</a>
+                            <a href="#target-acos" class="block text-sm text-blue-600 hover:text-blue-800">3. Target ACOS Settings</a>
+                            <a href="#cvr-analysis" class="block text-sm text-blue-600 hover:text-blue-800">4. CVR-Based Analysis</a>
+                            <a href="#implementation" class="block text-sm text-blue-600 hover:text-blue-800">5. Implementation Methodology</a>
+                            <a href="#asp-gates" class="block text-sm text-blue-600 hover:text-blue-800">6. ASP-Based Gates</a>
+                            <a href="#lifecycle" class="block text-sm text-blue-600 hover:text-blue-800">7. Lifecycle Guardrails</a>
+                            <a href="#rule-types" class="block text-sm text-blue-600 hover:text-blue-800">8. Rule Types & Setup</a>
+                            <a href="#filters" class="block text-sm text-blue-600 hover:text-blue-800">9. Copy-Paste Ready Filters</a>
+                            <a href="#change-logs" class="block text-sm text-blue-600 hover:text-blue-800">10. Change Log Verification</a>
+                            <a href="#defense" class="block text-sm text-blue-600 hover:text-blue-800">11. Defense Playbook</a>
+                            <a href="#dashboard" class="block text-sm text-blue-600 hover:text-blue-800">12. Scale Insights Dashboard</a>
+                            <a href="#checklist" class="block text-sm text-blue-600 hover:text-blue-800">13. Implementation Checklist</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="lg:w-3/4">
+                <!-- Overview Section -->
+                <section id="overview" class="section-card">
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-info-circle text-blue-500 mr-3"></i>
+                        1. Overview
+                    </h2>
+                    <div class="prose max-w-none">
+                        <p class="text-gray-700 mb-4">
+                            <strong>Scale Insights</strong> is an Amazon advertising optimization platform that automates PPC work so you can focus on strategy. It connects to your Amazon Ads account, pulls performance data, and runs rule-based actions on a schedule—things like bid increases/decreases, budget pacing, search-term harvesting, and adding negatives.
+                        </p>
+                        
+                        <div class="info-box">
+                            <h4 class="font-semibold mb-2">Key Capabilities:</h4>
+                            <ul class="list-disc ml-5 space-y-1">
+                                <li>Rule-based bid management and budget optimization</li>
+                                <li>Search term harvesting and negative keyword automation</li>
+                                <li>Portfolio and campaign type scoping</li>
+                                <li>Isolation strategies (SKC/Exec traffic funneling)</li>
+                                <li>Change tracking and preview functionality</li>
+                                <li>Dayparting, bulk edits, and performance alerts</li>
+                            </ul>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-blue-800">SP Campaigns</h4>
+                                <p class="text-sm text-blue-600">Sponsored Products</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-800">SB Campaigns</h4>
+                                <p class="text-sm text-purple-600">Sponsored Brands</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-green-800">SD Campaigns</h4>
+                                <p class="text-sm text-green-600">Sponsored Display</p>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box mt-4">
+                            <p class="font-medium">
+                                <i class="fas fa-link text-yellow-600 mr-2"></i>
+                                Scale Insights Portal: <a href="https://portal.scaleinsights.com/" target="_blank" class="text-blue-600 underline">https://portal.scaleinsights.com/</a>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Foundation & Structure -->
+                <section id="foundation" class="section-card">
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-building text-indigo-500 mr-3"></i>
+                        2. Foundation & Structure
+                    </h2>
+                    
+                    <div class="workflow-box">
+                        <h3 class="text-lg font-semibold mb-3">What Happens in This Phase:</h3>
+                        <ol class="list-decimal ml-5 space-y-2">
+                            <li><strong>Setting Up Scale Insights Rules</strong>
+                                <ul class="list-disc ml-5 mt-2 space-y-1">
+                                    <li>Bidding Rules</li>
+                                    <li>Negative Rules</li>
+                                    <li>Correlation of Linked Ad Groups with ASINs and Automated ASINs</li>
+                                </ul>
+                            </li>
+                            <li><strong>Do's and Don'ts when implementing Scale Insights Rules</strong></li>
+                            <li><strong>Determining the right clicks-threshold for each product</strong></li>
+                            <li><strong>Learn how to optimize/adjust Scale Insights Rules based on changes in goals/targets</strong></li>
+                        </ol>
+                    </div>
+
+                    <div class="info-box">
+                        <h4 class="font-semibold mb-2">Why Scale Insights Bidding Rules are Powerful:</h4>
+                        <ol class="list-decimal ml-5 space-y-1">
+                            <li><strong>Flexibility</strong></li>
+                            <li><strong>Full Control</strong></li>
+                            <li><strong>Transparency</strong></li>
+                        </ol>
+                    </div>
+
+                    <div class="success-box">
+                        <h4 class="font-semibold mb-2">Scale Insights - Behind the Scenes:</h4>
+                        <ul class="list-disc ml-5 space-y-1">
+                            <li>We need to enable automation for our ASINs in Scale Insights</li>
+                            <li>Scale Insights Rules work within ad groups, so a linked ASIN inside our target ad group is a requirement before adding any rules</li>
+                            <li><strong>Rules apply to all keywords and ASINs inside of our ad group</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4 class="font-semibold mb-2">Important Implementation Points:</h4>
+                        <ol class="list-decimal ml-5 space-y-1">
+                            <li>We change the Target ACOS and clicks based on the Account/product</li>
+                            <li>We <strong>don't connect</strong> rules to Brand Defense campaigns (Brand KWs and PDP) since we want to have a manual approach on these</li>
+                            <li>We ONLY use Rules/Algorithms and NOT Strategic Objectives since they increase the complexity. Simple Scales, Fancy Fails</li>
+                        </ol>
+                    </div>
+
+                    <div class="workflow-box">
+                        <h4 class="font-semibold mb-2">Key Limitations to Keep in Mind:</h4>
+                        <ul class="list-disc ml-5 space-y-1">
+                            <li><strong>Precision Required:</strong> Scale Insights executes exactly as instructed. Any errors in your settings will be automated and applied across all campaigns, so it's crucial to be meticulous when configuring rules.</li>
+                            <li><strong>Steep Learning Curve:</strong> The platform can be challenging to master initially. However, once you understand the system, it becomes much easier to navigate and leverage effectively.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Target ACOS Settings -->
+                <section id="target-acos" class="section-card">
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-bullseye text-green-500 mr-3"></i>
+                        3. Target ACOS Settings
+                    </h2>
+                    
+                    <div class="highlight-box">
+                        <h3 class="text-lg font-semibold mb-3 flex items-center">
+                            <i class="fas fa-exclamation-triangle text-yellow-600 mr-2"></i>
+                            Before Setting Target ACOS
+                        </h3>
+                        <p class="font-medium mb-3">Review your last 30 days ACOS data first:</p>
+                        <ol class="list-decimal ml-5 space-y-2">
+                            <li>Navigate to your Amazon Ads account dashboard</li>
+                            <li>Set date range to "Last 30 days"</li>
+                            <li>Review ACOS performance by campaign type (SP, SB, SD)</li>
+                            <li>Separate Brand vs Non-Brand performance</li>
+                            <li>Consider your profit margins and business goals</li>
+                            <li>Use the guidelines below as starting points, then adjust based on your data</li>
+                        </ol>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+                        <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
+                            <h3 class="text-lg font-semibold text-blue-800 mb-3">Non-Brand (NB) Targets</h3>
+                            <div class="text-3xl font-bold text-blue-600 mb-2">30% Default</div>
+                            <div class="space-y-2 text-sm">
+                                <div><strong>&lt;$20 ASP:</strong> 30-35%</div>
+                                <div><strong>$20-50 ASP:</strong> 25-32%</div>
+                                <div><strong>&gt;$50 ASP:</strong> 20-28%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+                            <h3 class="text-lg font-semibold text-green-800 mb-3">Brand (BR) Targets</h3>
+                            <div class="text-3xl font-bold text-green-600 mb-2">12% Default</div>
+                            <div class="space-y-2 text-sm">
+                                <div><strong>Range:</strong> 8-15%</div>
+                                <div><strong>Depends on:</strong> Margin & promo goals</div>
+                                <div><strong>Coverage:</strong> Stability over growth</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box mt-4">
+                        <h4 class="font-semibold mb-2">Why 30% NB ACOS Makes Sense:</h4>
+                        <ul class="list-disc ml-5 space-y-1 text-sm">
+                            <li><strong>Discovery Investment:</strong> Non-brand traffic requires higher ACOS tolerance during customer acquisition</li>
+                            <li><strong>Market Competition:</strong> Competitive categories often require 25-35% ACOS to maintain visibility</li>
+                            <li><strong>Attribution Gaps:</strong> Amazon attribution windows miss long-term brand building from discovery campaigns</li>
+                            <li><strong>Product Mix Reality:</strong> Most portfolios have products at different lifecycle stages requiring different targets</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- CVR-Based Analysis -->
+                <section id="cvr-analysis" class="section-card">
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-chart-line text-purple-500 mr-3"></i>
+                        4. CVR-Based Analysis
+                    </h2>
+                    
+                    <div class="info-box">
+                        <h4 class="font-semibold mb-2">CVR Considerations:</h4>
+                        <ul class="list-disc ml-5 space-y-1">
+                            <li>CVR is one of the most important metrics on Amazon PPC</li>
+                            <li>In general, CVR changes based on the price and quality of the product</li>
+                            <li>Usually a lower price leads to a higher CVR</li>
+                            <li>A low rating → low CVR</li>
+                            <li>A 1% increase or decrease in CVR can significantly affect a product's performance</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+                        <div class="bg-blue-50 p-6 rounded-lg">
+                            <h3 class="text-lg font-semibold text-blue-800 mb-4">Price-Based Conversion Analysis</h3>
+                            <div class="table-container">
+                                <table class="w-full text-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Price ($)</th>
+                                            <th>Predicted CVR</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>5</td><td>20%</td></tr>
+                                        <tr><td>10</td><td>16%</td></tr>
+                                        <tr><td>15</td><td>14%</td></tr>
+                                        <tr><td>20</td><td>13%</td></tr>
+                                        <tr><td>25</td><td>12%</td></tr>
+                                        <tr><td>30</td><td>11%</td></tr>
+                                        <tr><td>35</td><td>10%</td></tr>
+                                        <tr><td>40</td><td>9%</td></tr>
+                                        <tr><td>45</td><td>9%</td></tr>
+                                        <tr><td>50</td><td>8%</td></tr>
+                                        <tr><td>60</td><td>7%</td></tr>
+                                        <tr><td>70</td><td>6%</td></tr>
+                                        <tr><td>80</td><td>6%</td></tr>
+                                        <tr><td>90</td><td>5%</td></tr>
+                                        <tr><td>100</td><td>4%</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-6 rounded-lg">
+                            <h3 class="text-lg font-semibold text-purple-800 mb-4">Clicks Before Taking Action</h3>
+                            <div class="table-container">
+                                <table class="w-full text-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>CVR</th>
+                                            <th>Clicks Required</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>20%</td><td>10</td></tr>
+                                        <tr><td>16%</td><td>13</td></tr>
+                                        <tr><td>14%</td><td>15</td></tr>
+                                        <tr><td>13%</td><td>16</td></tr>
+                                        <tr><td>12%</td><td>18</td></tr>
+                                        <tr><td>11%</td><td>19</td></tr>
+                                        <tr><td>10%</td><td>21</td></tr>
+                                        <tr><td>9%</td><td>24</td></tr>
+                                        <tr><td>8%</td><td>27</td></tr>
+                                        <tr><td>7%</td><td>31</td></tr>
+                                        <tr><td>6%</td><td>37</td></tr>
+                                        <tr><td>5%</td><td>44</td></tr>
+                                        <tr><td>4%</td><td>56</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="success-box mt-4">
+                        <h4 class="font-semibold mb-2">Conservative Approach - 10% Tolerance:</h4>
+                        <div class="table-container">
+                            <table class="w-full text-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Product Advertising CVR</th>
+                                        <th>Clicks before taking Action</th>
+                                        <th># KWs/ASINs per campaign</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>&gt;20%</td><td>10</td><td>30</td></tr>
+                                    <tr><td>15%</td><td>15</td><td>30</td></tr>
+                                    <tr><td>10%</td><td>20</td><td>30</td></tr>
+                                    <tr><td>8%</td><td>30</td><td>20</td></tr>
+                                    <tr><td>6%</td><td>35</td><td>20</td></tr>
+                                    <tr><td>5%</td><td>45</td><td>10</td></tr>
+                                    <tr><td>&lt; 4%</td><td>55</td><td>5</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="workflow-box">
+                        <h4 class="font-semibold mb-2">How to Find Your Advertising CVR:</h4>
+                        <ul class="list-disc ml-5 space-y-1">
+                            <li>SI: Product CVR from Dashboard</li>
+                            <li>SI: Product CVR from Portfolios</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Implementation Methodology -->
+                <section id="implementation" class="section-card">
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-cogs text-orange-500 mr-3"></i>
+                        5. Implementation Methodology
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="workflow-box">
+                            <h3 class="text-lg font-semibold mb-3">Data Range Analysis</h3>
+                            <p class="text-gray-700 mb-4">We aim to analyze data across different date ranges to read both the latest trends and the broader performance picture.</p>
+                            <p class="text-gray-700 mb-4">Our approach prioritizes shorter date ranges to make more immediate, data-driven decisions. If the data is not enough in shorter date range, then we analyze a longer period.</p>
+                            <p class="font-medium">From 7 days, 14 days, 30 days, to 60 days.</p>
+                        </div>
+                        
+                        <div class="info-box">
+                            <h3 class="text-lg font-semibold mb-3">Days to Exclude</h3>
+                            <p class="mb-3"><strong>Exclude:</strong></p>
+                            <ul class="list-disc ml-5 space-y-1">
+                                <li>The past 2 days due to Amazon Ads Attribution</li>
+                                <li>Holidays like Prime Day, BFCM and the 2 days before and after each holiday</li>
+                            </ul>
+                            <p class="text-gray-700 mt-3">We don't want to have outlier dates in our data set since Scale Insights could increase/decrease the bids after analyzing these dates.</p>
+                        </div>
+                    </div>
+
+                    <div class="success-box mt-4">
+                        <h3 class="text-lg font-semibold mb-3">Days to Wait/Observe After Making a Change</h3>
+                        <p class="text-gray-700 mb-4">If we take action every day, we'll be analyzing nearly the same data with only a one-day difference, which won't lead to meaningful changes.</p>
+                        <p class="text-gray-700 mb-4">Our approach is to take action, <strong>observe the results</strong>, and then act again based on the new data.</p>
+                        <p class="text-gray-700 mb-4">In our rules, we set a <strong>7-day waiting period</strong> after making a bid change for each target.</p>
+                        <ul class="list-disc ml-5 space-y-2">
+                            <li>If a keyword meets the set criteria, Scale Insights will adjust the bid and wait 7 days before re-evaluating that keyword</li>
+                            <li>If the criteria aren't met, Scale Insights will continue analyzing the keyword daily until the conditions are satisfied</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3 class="text-lg font-semibold mb-3">Rule Stacking and Priority</h3>
+                        <p class="mb-3"><strong>Stacking:</strong> We can "stack" rules on top of each other. This means that we can connect to one ad group different rules so Scale Insights will analyze multiple rules in order of priority.</p>
+                        <p class="mb-3"><strong>Priority:</strong> Once we have multiple rules, Scale Insights needs to understand which rule they need to be analyzed first. The rule with the highest priority will be the first one to be analyzed, if the criteria are not met, then Scale Insights will analyze the rule with the second highest priority and so on.</p>
+                    </div>
+                </section>
+
+                <!-- ASP-Based Gates -->
+                <section id="asp-gates" class="section-card">
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-sliders-h text-teal-500 mr-3"></i>
+                        6. ASP-Based Gates
+                    </h2>
+                    
+                    <p class="text-gray-700 mb-4">Different Average Selling Price (ASP) ranges require different data gates and thresholds for optimization decisions.</p>
+                    
+                    <div class="table-container">
+                        <table class="w-full">
+                            <thead>
+                                <tr>
+                                    <th>ASP (USD)</th>
+                                    <th>Data Gate</th>
+                                    <th>Neg Exact</th>
+                                    <th>Pause</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>&lt; $20</td>
+                                    <td>≥15 clicks or ≥$8 spend</td>
+                                    <td>≥20 clicks &amp; ≥1.7× CPA</td>
+                                    <td>≥25 clicks &amp; ≥2× CPA</td>
+                                </tr>
+                                <tr>
+                                    <td>$20-50</td>
+                                    <td>≥20 clicks or ≥$12 spend</td>
+                                    <td>≥25 clicks &amp; ≥1.5× CPA</td>
+                                    <td>≥35 clicks &amp; ≥2× CPA</td>
+                                </tr>
+                                <tr>
+                                    <td>$50-120</td>
+                                    <td>≥25 clicks or ≥$20 spend</td>
+                                    <td>≥35 clicks &amp; ≥1.4× CPA</td>
+                                    <td>≥45 clicks &amp; ≥1.8× CPA</td>
+                                </tr>
+                                <tr>
+                                    <td>&gt; $120</td>
+                                    <td>≥30 clicks or ≥$30 spend</td>
+                                    <td>≥40 clicks &amp; ≥1.3× CPA</td>
+                                    <td>≥55 clicks &amp; ≥1.6× CPA</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="info-box mt-4">
+                        <p class="text-sm">
+                            <strong>CPA Calculation:</strong> If no CPA target is stored, compute CPA proxy = <span class="code-block inline">Price × Target ACOS</span>
+                        </p>
+                    </div>
+                    
+                    <div class="success-box mt-4">
+                        <p class="text-sm">
+                            <strong>General Guideline:</strong> Higher-priced products require more clicks for statistical significance due to lower predicted conversion rates. Adjust thresholds based on your specific product performance data.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Lifecycle Guardrails -->
+                <section id="lifecycle" class="section-card">
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-timeline text-indigo-500 mr-3"></i>
+                        7. Lifecycle Guardrails
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+                            <h3 class="text-lg font-semibold text-green-800 mb-3">Launch (0–14d)</h3>
+                            <ul class="space-y-2 text-sm">
+                                <li>• Bid moves ≤ <strong>5–8%/day</strong></li>
+                                <li>• Bid floor at <strong>70% of Suggested Low</strong></li>
+                                <li>• <strong>No negatives</strong> until ≥30 clicks &amp; ≥2× target CPA</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-orange-50 p-6 rounded-lg border-l-4 border-orange-500">
+                            <h3 class="text-lg font-semibold text-orange-800 mb-3">Scale (15–60d)</h3>
+                            <ul class="space-y-2 text-sm">
+                                <li>• Bid moves <strong>8–12%</strong></li>
+                                <li>• Allow Neg Exact at <strong>≥20 clicks &amp; ≥1.5× CPA</strong></li>
+                                <li>• Standard ASP gates apply</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-500">
+                            <h3 class="text-lg font-semibold text-purple-800 mb-3">Stabilize (60d+)</h3>
+                            <ul class="space-y-2 text-sm">
+                                <li>• Tighter floors/ceilings</li>
+                                <li>• Allow pause rules</li>
+                                <li>• Neg Phrase for bad themes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Rule Types & Setup -->
+                <section id="rule-types" class="section-card">
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-tools text-red-500 mr-3"></i>
+                        8. Rule Types & Setup
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="workflow-box">
+                            <h3 class="text-lg font-semibold mb-3">Bidding Rules</h3>
+                            <p class="text-gray-700 mb-4">Goal: Bid optimization is a crucial element in effectively optimizing and scaling our ad account. We will leverage Scale Insights' automated rules to achieve this.</p>
+                            <ul class="list-disc ml-5 space-y-1">
+                                <li>Flexibility in customization</li>
+                                <li>Full control over bid adjustments</li>
+                                <li>Transparency in rule execution</li>
+                                <li>Precision required in setup</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="success-box">
+                            <h3 class="text-lg font-semibold mb-3">Negative Rules</h3>
+                            <p class="text-gray-700 mb-4">The end-goal is automating the process of adding negative rules <strong>only to discovery campaigns and auto campaigns</strong>.</p>
+                            <p class="text-gray-700">We only add Negative Targeting rules to Discovery and Auto campaigns since the idea behind these campaigns is to capture new traffic, and therefore some of the Search Terms would be irrelevant to our business.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-box mt-4">
+                        <h4 class="font-semibold mb-2">Key Setup Summary:</h4>
+                        <ul class="list-disc ml-5 space-y-1">
+                            <li><strong>How many clicks?</strong> Based on Conversion Rate and Tolerance of Error</li>
+                            <li><strong>Data range to analyze?</strong> 7, 14, 30 and 60 days - in this order</li>
+                            <li><strong>Days to Exclude?</strong> Last 2 and holidays (+ 2 days before and after)</li>
+                            <li><strong>Days to Observe?</strong> 7 Days</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Copy-Paste Ready Filters -->
+                <section id="filters" class="section-card">
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-filter text-pink-500 mr-3"></i>
+                        9. Copy-Paste Ready Filters
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h3 class="text-lg font-semibold mb-4">General Exclusions:</h3>
+                            <div class="code-block">Portfolio name does NOT contain:
+DEF, BRAND, BKWS, PROTECT
+
+Campaign name does NOT contain:
+DEF, BRAND, BKWS, PROTECT
+
+Status = Enabled</div>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h3 class="text-lg font-semibold mb-4">Negative Rules Additional:</h3>
+                            <div class="code-block">Campaign name does NOT contain: EX, SKC, -EX
+
+Ad group name does NOT contain:
+EXEC, SKC</div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box mt-4">
+                        <h4 class="font-semibold mb-2">Why These Exclusions?</h4>
+                        <ul class="list-disc ml-5 space-y-1 text-sm">
+                            <li><strong>General Exclusions:</strong> Protect brand/defense campaigns from non-brand optimization logic</li>
+                            <li><strong>Negative Rules Additional:</strong> Prevent adding negatives to winner campaigns (EX/SKC) that are already profitable</li>
+                            <li><strong>Status = Enabled:</strong> Only applies rules to active campaigns/ad groups</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Change Log Verification -->
+                <section id="change-logs" class="section-card">
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-clipboard-check text-cyan-500 mr-3"></i>
+                        10. Change Log Verification
+                    </h2>
+                    
+                    <div class="highlight-box">
+                        <h3 class="text-lg font-semibold mb-3">At-a-Glance Checks (Fast Pass)</h3>
+                        <ul class="list-disc ml-5 space-y-2">
+                            <li>Run time & rule name match what you scheduled</li>
+                            <li>Action count ≈ preview count (within ±10%)</li>
+                            <li>Scope sanity: only the intended portfolios/campaign types touched (NB only; no BR/DEF)</li>
+                            <li>Entity sanity: right layer changed (e.g., keyword bids, not ad-group bids, for that rule)</li>
+                            <li>No extremes: no moves beyond your floors/ceilings or odd 0→huge jumps</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+                        <div>
+                            <h4 class="font-semibold mb-3">Fields to Read in Each Log Line</h4>
+                            <div class="space-y-3">
+                                <div class="bg-blue-50 p-3 rounded">
+                                    <h5 class="font-medium text-blue-800">Common to All Actions</h5>
+                                    <ul class="text-sm mt-2 space-y-1">
+                                        <li>• Timestamp & Account/Marketplace</li>
+                                        <li>• Rule Name / Version</li>
+                                        <li>• Entity Path: Portfolio → Campaign → Ad Group → (Keyword/Target)</li>
+                                        <li>• Action: increase/decrease/set/pause/add negative/add keyword</li>
+                                        <li>• Before → After values (+ % change)</li>
+                                        <li>• Status: succeeded / skipped (with reason)</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 p-3 rounded">
+                                    <h5 class="font-medium text-green-800">Bidding-Specific</h5>
+                                    <ul class="text-sm mt-2 space-y-1">
+                                        <li>• Previous Bid → New Bid and % change</li>
+                                        <li>• Safeguards hit: bid floor/ceiling</li>
+                                        <li>• Reason snapshot: ACOS vs target, clicks/spend thresholds</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold mb-3">Cross-Checks (3-5 minutes)</h4>
+                            <ul class="list-disc ml-5 space-y-2 text-sm">
+                                <li><strong>Counts:</strong> preview vs log action count (±10%)</li>
+                                <li><strong>Spot-check 5 items:</strong> ensure none are BR/DEF or EX/SKC (for negatives)</li>
+                                <li><strong>Guardrails:</strong> confirm no entries breached floors/ceilings</li>
+                                <li><strong>Skips:</strong> skim "skipped" reasons—common culprits are dayparting, already paused, or below floor</li>
+                                <li><strong>Results trend (next day):</strong> no sudden CPC spikes on winners; no volume drop on brand</li>
+                            </ul>
+                            
+                            <div class="danger-badge inline-block mt-3">
+                                <h5 class="font-medium">Red Flags</h5>
+                            </div>
+                            <ul class="list-disc ml-5 mt-2 space-y-1 text-sm">
+                                <li>Negatives added to brand/defense or to Exec/SKC campaigns</li>
+                                <li>Bids pushed past floor/ceiling or >15% move in a single run</li>
+                                <li>Large mismatch between preview and actual actions</li>
+                                <li>Many "skipped" due to mis-scoped filters</li>
+                                <li>Oscillation (up then down daily on the same keyword)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Defense Playbook -->
+                <section id="defense" class="section-card">
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-shield-alt text-yellow-500 mr-3"></i>
+                        11. Defense Playbook
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="bg-blue-50 p-6 rounded-lg">
+                            <h3 class="text-lg font-semibold text-blue-800 mb-3">BKWS (Branded Keywords Search)</h3>
+                            <p class="text-sm mb-3">Campaigns bidding on your own brand terms + close variants/misspellings.</p>
+                            <div class="space-y-2 text-sm">
+                                <div><strong>Goal:</strong> Block competitors on your name and keep message/TOS placement</div>
+                                <div><strong>Approach:</strong> Use CPC ceilings; maintain modest TOS multiplier; focus on coverage, not expansion</div>
+                                <div><strong>Negatives:</strong> Only block obvious junk intent (customer service, refund, manual)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-green-50 p-6 rounded-lg">
+                            <h3 class="text-lg font-semibold text-green-800 mb-3">Def PDP (Defensive Product Detail Page)</h3>
+                            <p class="text-sm mb-3">SP campaigns targeting your own ASINs so competitor ads don't steal shoppers.</p>
+                            <div class="space-y-2 text-sm">
+                                <div><strong>Goal:</strong> Cross-sell/upsell within your brand; prevent competitor takeover</div>
+                                <div><strong>Approach:</strong> Prioritize hero ASINs; keep budgets modest but always-on</div>
+                                <div><strong>Negatives:</strong> Add negative ASINs/categories for serial bleeders with 0 orders</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-box mt-6">
+                        <h4 class="font-semibold mb-2">Why Exclude Defense from Normal Rules?</h4>
+                        <ul class="list-disc ml-5 space-y-1 text-sm">
+                            <li><strong>Different Intent:</strong> Branded traffic converts high and is not "new" demand</li>
+                            <li><strong>Avoid Overspend:</strong> Low ACOS on brand can trick automation into over-bidding</li>
+                            <li><strong>Protect Coverage:</strong> Negative/harvesting rules can accidentally block brand terms</li>
+                            <li><strong>Cleaner Measurement:</strong> Keeping defense separate makes TACOS/"incremental" analysis honest</li>
+                            <li><strong>Stability:</strong> Brand & PDP defense should be "steady coverage," not whipsawed by discovery rules</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box mt-4">
+                        <h4 class="font-semibold mb-2">Brand CPC Caps by Market:</h4>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                            <div><strong>US:</strong> $0.70</div>
+                            <div><strong>CA:</strong> C$0.90</div>
+                            <div><strong>UK:</strong> £0.55</div>
+                            <div><strong>DE:</strong> €0.60</div>
+                        </div>
+                        <p class="text-sm mt-2">Lift +20% only during promos, then revert. Use rule: New Bid = min(Suggested Mid, CPC Cap)</p>
+                    </div>
+                </section>
+
+                <!-- Scale Insights Dashboard -->
+                <section id="dashboard" class="section-card">
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-chart-bar text-indigo-500 mr-3"></i>
+                        12. Scale Insights Dashboard
+                    </h2>
+                    
+                    <div class="info-box">
+                        <h4 class="font-semibold mb-2">Portal Access:</h4>
+                        <p class="mb-3">
+                            <a href="https://portal.scaleinsights.com/" target="_blank" class="text-blue-600 underline">
+                                https://portal.scaleinsights.com/
+                            </a>
+                        </p>
+                        <p class="text-sm">Access your Scale Insights dashboard to monitor rule performance, review change logs, and manage automation settings.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-semibold mb-2">Key Dashboard Sections:</h4>
+                            <ul class="list-disc ml-5 space-y-1 text-sm">
+                                <li>Automation → Rules Management</li>
+                                <li>Automation → Change Logs</li>
+                                <li>Performance → Campaign Analytics</li>
+                                <li>Settings → Account Configuration</li>
+                                <li>Reports → Bulk Operations</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-semibold mb-2">7thD Cadence Setup:</h4>
+                            <ul class="list-disc ml-5 space-y-1 text-sm">
+                                <li>Set "days to observe = 6"</li>
+                                <li>Rules execute on 7th day after last run</li>
+                                <li>Stagger runs: Negatives AM, Bidding PM</li>
+                                <li>Avoid overlapping entity layers same day</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Implementation Checklist -->
+                <section id="checklist" class="section-card">
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800 flex items-center">
+                        <i class="fas fa-clipboard-list text-emerald-500 mr-3"></i>
+                        13. Implementation Checklist
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="bg-blue-50 p-6 rounded-lg">
+                            <h3 class="text-lg font-semibold text-blue-800 mb-4">Applying Bidding Rules:</h3>
+                            <div class="space-y-3">
+                                <label class="flex items-start space-x-3">
+                                    <input type="checkbox" class="mt-1">
+                                    <span class="text-sm">Filter for campaigns/ad groups without existing rules to save time</span>
+                                </label>
+                                <label class="flex items-start space-x-3">
+                                    <input type="checkbox" class="mt-1">
+                                    <span class="text-sm">Apply rules only to enabled campaigns and ad groups (be mindful about dayparting)</span>
+                                </label>
+                                <label class="flex items-start space-x-3">
+                                    <input type="checkbox" class="mt-1">
+                                    <span class="text-sm">Exclude defense campaigns using portfolio or campaign name filters (BKWS and Def PDP)</span>
+                                </label>
+                                <label class="flex items-start space-x-3">
+                                    <input type="checkbox" class="mt-1">
+                                    <span class="text-sm">Apply rules exclusively to non-branded campaigns/ad groups</span>
+                                </label>
+                                <label class="flex items-start space-x-3">
+                                    <input type="checkbox" class="mt-1">
+                                    <span class="text-sm">Apply rules to new campaigns immediately upon creation (sort by start date)</span>
+                                </label>
+                                <label class="flex items-start space-x-3">
+                                    <input type="checkbox" class="mt-1">
+                                    <span class="text-sm">Ensure all campaign types (SP, SB, SD) are checked</span>
+                                </label>
+                                <label class="flex items-start space-x-3">
+                                    <input type="checkbox" class="mt-1">
+                                    <span class="text-sm">Verify campaigns are linked to an Automated ASIN for rules to function</span>
+                                </label>
+                                <label class="flex items-start space-x-3">
+                                    <input type="checkbox" class="mt-1">
+                                    <span class="text-sm">Always review the rule execution preview across different timeframes to ensure accuracy</span>
+                                </label>
+                                <label class="flex items-start space-x-3">
+                                    <input type="checkbox" class="mt-1">
+                                    <span class="text-sm">Allow 24 hours for rule changes to take effect. Review change logs to verify</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-6 rounded-lg">
+                            <h3 class="text-lg font-semibold text-purple-800 mb-4">Applying Negative Rules:</h3>
+                            <div class="space-y-3">
+                                <label class="flex items-start space-x-3">
+                                    <input type="checkbox" class="mt-1">
+                                    <span class="text-sm">Filter for campaigns/ad groups without existing rules to save time</span>
+                                </label>
+                                <label class="flex items-start space-x-3">
+                                    <input type="checkbox" class="mt-1">
+                                    <span class="text-sm">Apply rules only to enabled campaigns and ad groups (be mindful about dayparting)</span>
+                                </label>
+                                <label class="flex items-start space-x-3">
+                                    <input type="checkbox" class="mt-1">
+                                    <span class="text-sm">Exclude defense campaigns using portfolio or campaign name filters (BKWS and Def PDP)</span>
+                                </label>
+                                <label class="flex items-start space-x-3">
+                                    <input type="checkbox" class="mt-1">
+                                    <span class="text-sm">Exclude exact match targeting campaigns</span>
+                                </label>
+                                <label class="flex items-start space-x-3">
+                                    <input type="checkbox" class="mt-1">
+                                    <span class="text-sm">Apply rules exclusively to non-branded campaigns/ad groups</span>
+                                </label>
+                                <label class="flex items-start space-x-3">
+                                    <input type="checkbox" class="mt-1">
+                                    <span class="text-sm">Apply rules to new campaigns immediately upon creation (sort by start date)</span>
+                                </label>
+                                <label class="flex items-start space-x-3">
+                                    <input type="checkbox" class="mt-1">
+                                    <span class="text-sm">Ensure all campaign types (SP, SB, SD) are checked</span>
+                                </label>
+                                <label class="flex items-start space-x-3">
+                                    <input type="checkbox" class="mt-1">
+                                    <span class="text-sm">Verify campaigns are linked to an Automated ASIN for rules to function</span>
+                                </label>
+                                <label class="flex items-start space-x-3">
+                                    <input type="checkbox" class="mt-1">
+                                    <span class="text-sm">Always review the rule execution preview across different timeframes to ensure accuracy</span>
+                                </label>
+                                <label class="flex items-start space-x-3">
+                                    <input type="checkbox" class="mt-1">
+                                    <span class="text-sm">Allow 24 hours for rule changes to take effect. Review change logs to verify</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="workflow-box mt-6">
+                        <h3 class="text-lg font-semibold mb-3">Final Implementation Summary:</h3>
+                        <ul class="list-disc ml-5 space-y-2">
+                            <li><strong>Automation:</strong> Useful when under control. We don't connect our rules to branded or defensive campaigns, we want full control of these type of campaigns</li>
+                            <li><strong>Scale Insights Rules:</strong> Automate an ASIN, link an ASIN to an ad group and then assign rules to the ad group. Remember, SI rules are linked to a specific ASIN inside our ad group</li>
+                            <li><strong>Foundational Rules:</strong> We need to fully understand how our foundational rules work. Remember, although we are automating our bid adjustments we still need to monitor and adjust our rules as needed based in our goals</li>
+                            <li><strong>When To Take Action:</strong> Let's always analyze our conversion rate and price to get an idea of our action threshold. Remember, this is key to avoid killing our account, both in the sense of getting no impressions or wasting our budget</li>
+                            <li><strong>Negative Rules:</strong> We only apply these rules to our discovery campaigns: phrase, auto, broad, etc. We have multiple tools such as the word analysis and search term analysis, but ideally our negative rules should cover most of the manual work</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Professional Footer -->
+    <div class="professional-footer">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-6">
+                <div class="text-4xl mb-4">
+                    <i class="fas fa-code text-blue-300"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Made with dedication by Asadullah</h3>
+                <p class="text-lg opacity-90 mb-6">Amazon PPC Campaign Builder V2.0</p>
+                <a href="https://www.linkedin.com/in/muhamadasadullah/" target="_blank" class="linkedin-btn">
+                    <i class="fab fa-linkedin"></i>
+                    Connect on LinkedIn
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm opacity-75">Scale Insights Rules SOP V2.0 - Amazon PPC Automation Standard Operating Procedure</p>
+            <p class="text-xs opacity-50 mt-2">For internal use only. All procedures should be customized based on specific account performance data.</p>
+        </div>
+    </footer>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"971ea1ab0978d56b","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.8.0","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDuo8oCaom3qoSeG89CytPLWK3UQ1AGi0eCdthpK%2F47geim0bbE0qT5BS1edgS2Zh5IJH9ZXz2Mz8KYvNr4TToTdpmPTYD%2BS1CAUI6sXxb2eHGd7uEUsYTrZWoOmuA%2FlgVUJ%2Fb5fnu%2B%2Bb5uP1fieiiWCcy7o2fLtgUjxLc7dAJKSTCcEfHeXFbJmb8sdzKjyu3A3QC1wwRISrnrtDGJi2mAq0crdUooeTFJa5TZO%2FKNzFyN0E0LRFlojkvHGJIHPSmuAPpgqioTw0lT4aaa%2FTnbzFlM1Pn6f9EzsERPhq6pxs3q1bez25MtOy94ChMFF0YogywXH9saC8eT4Nm1CklwZgyzAsYkCWpej4d%2FUpXNKu5C7esqv6EpigTkWuQH88Flee8wi64qovy4us7f8zSbCAoCoUjJz8eSoX4QR3RhO1IdYRq1kOD%2F%2FSRMrP%2FGHD8ZA1gUAZxbymVG2WAMHYb5sQM4Q8Lx%2B3Tq9OAejoSCyIQXj6aqRDYrxFsAnjYorppNDBxfw6Gp1nPX8Hba%2FmcPU%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDuo8oCaom3qoSeG89CytPLWK3UQ1AGi0eCdthpK/47geim0bbE0qT5BS1edgS2Zh5IJH9ZXz2Mz8KYvNr4TToTdpmPTYD+S1CAUI6sXxb2eHGd7uEUsYTrZWoOmuA/lgVUJ/b5fnu++b5uP1fieiiWCcy7o2fLtgUjxLc7dAJKSTCcEfHeXFbJmb8sdzKjyu3A3QC1wwRISrnrtDGJi2mAq0crdUooeTFJa5TZO/KNzFyN0E0LRFlojkvHGJIHPSmuAPpgqioTw0lT4aaa/TnbzFlM1Pn6f9EzsERPhq6pxs3q1bez25MtOy94ChMFF0YogywXH9saC8eT4Nm1CklwZgyzAsYkCWpej4d/UpXNKu5C7esqv6EpigTkWuQH88Flee8wi64qovy4us7f8zSbCAoCoUjJz8eSoX4QR3RhO1IdYRq1kOD//SRMrP/GHD8ZA1gUAZxbymVG2WAMHYb5sQM4Q8Lx+3Tq9OAejoSCyIQXj6aqRDYrxFsAnjYorppNDBxfw6Gp1nPX8Hba/mcPU=";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
